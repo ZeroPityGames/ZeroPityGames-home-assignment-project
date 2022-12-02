@@ -326,7 +326,6 @@ GameObject:
   - component: {fileID: 8840936524726116997}
   - component: {fileID: 8840936524726116996}
   - component: {fileID: -7146589279569867077}
-  - component: {fileID: -7268606978314813676}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -411,7 +410,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8840936524726117003}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.31
   m_Height: 2
   m_Direction: 1
@@ -425,7 +424,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8840936524726117003}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -456,23 +455,8 @@ MonoBehaviour:
   currentCustomerState: {fileID: 6195590718980761369}
   orderIndicator: {fileID: 3083692941263230468}
   eatingIndicator: {fileID: 5536743660313539833}
+  hasWorker: 0
   customersChair: {fileID: 0}
---- !u!208 &-7268606978314813676
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8840936524726117003}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &8840936525156951634
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sitState: {fileID: 5905234464015660319}
+  isSitting: 0
 --- !u!1 &8840936525166296582
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private int money;
+    public int money;
     [SerializeField] private TMP_Text moneyText;
 
     public void IncressMoney(int moneyAmount)
@@ -15,8 +15,14 @@ public class GameManager : MonoBehaviour
         UpdateCanvas();
     }
 
+    public void DecressMoney(int moneyAmount)
+    {
+        money -= moneyAmount;
+        UpdateCanvas();
+    }
+
     private void UpdateCanvas()
     {
-        moneyText.text = money.ToString();
+        moneyText.text = money.ToString() + "$";
     }
 }

@@ -21,7 +21,7 @@ public class RestaurantManager : MonoBehaviour
             foreach (Chair item in chairs)
             {
                 //Debug.Log("test");
-                if (item.isEmpty == true)
+                if (item.isEmpty == true && item.isActiveAndEnabled)
                 {
                     //Spawn customer and walk him to the table
                     GameObject customer = Instantiate(customers[Random.Range(0, customers.Length)], customerSpawnPosition.position, Quaternion.identity);

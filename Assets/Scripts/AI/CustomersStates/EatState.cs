@@ -12,9 +12,12 @@ public class EatState : State
 
     float eatingSeconds = 3;
 
+    GameManager gameManager;
+
     private void Start()
     {
         customerController = GetComponentInParent<CustomerController>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public override State RunCurrentState()
@@ -33,6 +36,7 @@ public class EatState : State
             if (eatingSeconds <= 0)
             {
                 isDoneEating = true;
+                gameManager.IncressMoney(100);
             }
             
             return this;
