@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class PickUpFoodState : State
 {
-    [SerializeField] private Transform foodPickupLocation;
+    [HideInInspector] public Transform foodPickupLocation;
     NavMeshAgent navMeshAgent;
     WorkerController workerController;
 

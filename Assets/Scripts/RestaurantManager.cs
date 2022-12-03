@@ -7,6 +7,8 @@ public class RestaurantManager : MonoBehaviour
     [SerializeField] private Chair[] chairs;
     [SerializeField] private GameObject[] customers;
     [SerializeField] private Transform customerSpawnPosition;
+    [SerializeField] private Transform exitLocation;
+    public List<CustomerController> customersInRestaurant = new List<CustomerController>();
  
     private void Start()
     {
@@ -25,7 +27,9 @@ public class RestaurantManager : MonoBehaviour
                 {
                     //Spawn customer and walk him to the table
                     GameObject customer = Instantiate(customers[Random.Range(0, customers.Length)], customerSpawnPosition.position, Quaternion.identity);
+                    customersInRestaurant.Add(customer.GetComponent<CustomerController>());
                     customer.GetComponent<CustomerController>().chairLocation = item.transform.position;
+                    customer.GetComponent<CustomerController>().exitLocation = exitLocation.position;
                     customer.GetComponent<CustomerController>().customersChair = item;
                     customer.GetComponent<CustomerController>().canMoveToChair = true;
                     item.isEmpty = false;
