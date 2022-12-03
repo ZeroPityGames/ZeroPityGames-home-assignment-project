@@ -8,7 +8,10 @@ public class RestaurantManager : MonoBehaviour
     [SerializeField] private GameObject[] customers;
     [SerializeField] private Transform customerSpawnPosition;
     [SerializeField] private Transform exitLocation;
-    public List<CustomerController> customersInRestaurant = new List<CustomerController>();
+    public GameObject upgradeScreen;
+     
+    [HideInInspector] public List<CustomerController> customersInRestaurant = new List<CustomerController>();
+    public int foodPrice;
  
     private void Start()
     {

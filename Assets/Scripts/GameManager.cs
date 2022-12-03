@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public int money;
     [SerializeField] private TMP_Text moneyText;
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
     public void IncressMoney(int moneyAmount)
     {
         money += moneyAmount;

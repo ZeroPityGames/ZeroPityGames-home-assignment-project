@@ -34,6 +34,10 @@ public class DeliverFoodState : State
             //{
             //    SetPath();
             //}
+            if (workerController.myCustomer.GetComponentInChildren<SitState>().hasGottenOrder == true)
+            {
+                isDoneWithOrder = true;
+            }
 
             if (Vector3.Distance(transform.position, workerController.myCustomer.transform.position) < 2f)
             {

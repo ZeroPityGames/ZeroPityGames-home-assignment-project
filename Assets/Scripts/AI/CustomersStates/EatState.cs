@@ -36,7 +36,7 @@ public class EatState : State
             if (eatingSeconds <= 0)
             {
                 isDoneEating = true;
-                gameManager.IncressMoney(100);
+                gameManager.IncressMoney(GetComponentInParent<CustomerController>().customersChair.GetComponentInParent<RestaurantManager>().foodPrice);
             }
             
             return this;
