@@ -4814,7 +4814,7 @@ GameObject:
   - component: {fileID: 899315609}
   m_Layer: 5
   m_Name: UpgradeButton
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4972,6 +4972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worker: {fileID: 6816526877103011094, guid: 65477427739d09547a2424e941fea568, type: 3}
   spawnPosition: {fileID: 365118796}
+  levelUpButtons: []
+  test: {fileID: 0}
 --- !u!65 &903258527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5810,7 +5812,7 @@ GameObject:
   - component: {fileID: 1017892580}
   m_Layer: 5
   m_Name: UpgradeButton
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6283,7 +6285,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1114936043}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 159528849}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1114936043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7785,6 +7799,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worker: {fileID: 6816526877103011094, guid: 65477427739d09547a2424e941fea568, type: 3}
   spawnPosition: {fileID: 800773823}
+  levelUpButtons:
+  - {fileID: 2089791497}
+  - {fileID: 1429810052}
+  - {fileID: 1017892580}
+  - {fileID: 899315609}
+  test: {fileID: 2089791497}
 --- !u!65 &1429629972
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7862,7 +7882,7 @@ GameObject:
   - component: {fileID: 1429810052}
   m_Layer: 5
   m_Name: UpgradeButton
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8806,6 +8826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f179ab055828f3a4f8dbb9a8ebcdda7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amountOfFood: 0
+  maxCarryFood: 5
 --- !u!114 &1559403301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12548,7 +12570,7 @@ GameObject:
   - component: {fileID: 2089791497}
   m_Layer: 5
   m_Name: UpgradeButton
-  m_TagString: Untagged
+  m_TagString: UpgradeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

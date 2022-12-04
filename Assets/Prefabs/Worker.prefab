@@ -146,9 +146,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.1
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 150
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -172,6 +172,9 @@ MonoBehaviour:
   specificCustomerTag: Customer
   currentWorkerState: {fileID: 6816526877775674186}
   hasFoodInHand: 0
+  carryCapacity: 1
+  carryAmount: 0
+  upgradeLevel: 0
   myCustomer: {fileID: 0}
 --- !u!1 &6816526877665988951
 GameObject:
@@ -312,3 +315,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpFoodState: {fileID: 6816526877669580467}
   hasOrder: 0
+  restaurantManager: {fileID: 0}

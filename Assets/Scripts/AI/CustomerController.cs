@@ -27,7 +27,6 @@ public class CustomerController : MonoBehaviour
     private void Update()
     {
         RunStateMachine();
-
     }
 
     private void RunStateMachine()
@@ -44,5 +43,7 @@ public class CustomerController : MonoBehaviour
     {
         currentCustomerState = nextState;
     }
+
+   
 
 }

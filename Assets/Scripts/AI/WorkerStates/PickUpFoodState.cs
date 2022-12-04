@@ -31,12 +31,10 @@ public class PickUpFoodState : State
             if (Vector3.Distance(transform.position, foodPickupLocation.position) < 1f)
             {
                 isPickedUp = true;
+                workerController.carryAmount = workerController.carryCapacity;
             }
             navMeshAgent.SetDestination(foodPickupLocation.position);
-            //if (!pathIsSet)
-            //{
-            //    SetPath();
-            //}
+            
             
             return this;
         }

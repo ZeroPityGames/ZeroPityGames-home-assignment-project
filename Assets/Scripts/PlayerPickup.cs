@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerPickup : MonoBehaviour
 {
-    bool hasFoodInHand;
+    private bool hasFoodInHand;
+    [SerializeField] private int amountOfFood;
+    [SerializeField] private int maxCarryFood;
     private void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.tag)
@@ -12,15 +14,20 @@ public class PlayerPickup : MonoBehaviour
             case "Customer":
                 if (hasFoodInHand == true)
                 {
-                    hasFoodInHand = false;
                     other.gameObject.GetComponentInChildren<SitState>().hasGottenOrder = true;
                     other.gameObject.GetComponentInChildren<WalkState>().isSitting = false;
                     other.gameObject.GetComponent<CustomerController>().customersChair.GetComponentInParent<RestaurantManager>().customersInRestaurant.Remove(other.gameObject.GetComponent<CustomerController>());
+                    amountOfFood--;
+                    if (amountOfFood <= 0)
+                    {
+                        hasFoodInHand = false;
+                    }
                 }
                 break;
             case "Food":
                 Debug.Log("Picked Up Food");
                 hasFoodInHand = true;
+                amountOfFood = maxCarryFood;
                 break;
             case "Computer":
                 other.gameObject.GetComponentInParent<RestaurantManager>().upgradeScreen.SetActive(true);
