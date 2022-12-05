@@ -8,10 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public int money;
     [SerializeField] private TMP_Text moneyText;
+    [SerializeField] private TMP_Text test;
 
     private void Start()
     {
-        Application.targetFrameRate = 60;
+        UpdateCanvas();
     }
     public void IncressMoney(int moneyAmount)
     {
@@ -28,5 +29,13 @@ public class GameManager : MonoBehaviour
     private void UpdateCanvas()
     {
         moneyText.text = money.ToString() + "$";
+    }
+
+    void ChangeCramerRate()
+    {
+        test.text = "FPS SHOUD HAVE CHANGED";
+        Debug.Log("Changed framse");
+        Application.targetFrameRate = 45;
+        QualitySettings.vSyncCount = 0;
     }
 }

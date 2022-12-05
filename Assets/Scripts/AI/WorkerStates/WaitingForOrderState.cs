@@ -8,6 +8,7 @@ public class WaitingForOrderState : State
     public PickUpFoodState pickUpFoodState;
     WorkerController workerController;
     NavMeshAgent navMeshAgent;
+    public Transform waitPosition;
 
     public bool hasOrder;
 
@@ -71,7 +72,7 @@ public class WaitingForOrderState : State
                     //{
                     //    SetPath();
                     //}
-                    navMeshAgent.SetDestination(new Vector3(7.50f, 0f, 3.5f));
+                    navMeshAgent.SetDestination(waitPosition.position);
                 }
             }
 

@@ -5,14 +5,26 @@ using TMPro;
 
 public class FPSCounter : MonoBehaviour
 {
-    public int avgFrameRate;
-    public TMP_Text display_Text;
+    public TMP_Text TEXT;
 
-    public void Update()
+    private float poolingTime = 1f;
+    private float time;
+    private float frameCount;
+
+    private void Update()
     {
-        float current = 0;
-        current = (int)(1f / Time.unscaledDeltaTime);
-        avgFrameRate = (int)current;
-        display_Text.text = avgFrameRate.ToString() + " FPS";
+        time += Time.deltaTime;
+
+        frameCount++;
+
+        if (time >= poolingTime)
+        {
+            int frameRate = Mathf.RoundToInt(frameCount / time);
+            TEXT.text = frameCount.ToString() + " FPS";
+
+            time -= poolingTime;
+            frameCount = 0;
+        }
     }
+
 }
