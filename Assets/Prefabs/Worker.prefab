@@ -175,6 +175,7 @@ MonoBehaviour:
   carryCapacity: 1
   carryAmount: 0
   upgradeLevel: 0
+  startingUpgradePrice: 10
   myCustomer: {fileID: 0}
 --- !u!1 &6816526877665988951
 GameObject:

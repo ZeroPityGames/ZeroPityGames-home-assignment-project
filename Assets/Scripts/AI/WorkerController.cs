@@ -8,11 +8,14 @@ public class WorkerController : MonoBehaviour
 {
     public string specificCustomerTag;
     public State currentWorkerState;
+    private GameManager gameManager;
 
     public bool hasFoodInHand;
     public float carryCapacity = 1;
     public float carryAmount;
     public float upgradeLevel;
+    public float startingUpgradePrice;
+    private float currentPrice;
 
     public GameObject myCustomer;
 
@@ -25,6 +28,7 @@ public class WorkerController : MonoBehaviour
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        gameManager = FindObjectOfType<GameManager>();
         startingSpeed = navMeshAgent.speed;
     }
 
@@ -52,12 +56,23 @@ public class WorkerController : MonoBehaviour
     public void LevelUpWorker()
     {
         Debug.Log("Worker is faster");
-        upgradeLevel++;
-        navMeshAgent.speed += startingSpeed * 0.01f;
-        if (upgradeLevel % 10 == 0)
+        currentPrice = (int)startingUpgradePrice * Mathf.Pow(1.15f,upgradeLevel);
+        Debug.Log(currentPrice);
+        if (gameManager.money >= currentPrice)
         {
-            carryCapacity++;
+            gameManager.DecressMoney((int)currentPrice);
+            upgradeLevel++;
+            navMeshAgent.speed += startingSpeed * 0.01f;
+            if (upgradeLevel % 10 == 0)
+            {
+                carryCapacity++;
+            }
         }
+        else
+        {
+            Debug.Log("NotEnaughMoney");
+        }
+        
         
     }
 }

@@ -18,6 +18,7 @@ public class LeaveState : State
         if (Vector2.Distance(new Vector2(customerController.transform.position.x, customerController.transform.position.z), new Vector2(customerController.exitLocation.x, customerController.exitLocation.z)) < 0.1f)
         {
             customerController.customersChair.isEmpty = true;
+            customerController.customersChair.GetComponentInParent<RestaurantManager>().UpdateSlider();
             Destroy(customerController.gameObject);
             return this;
         }

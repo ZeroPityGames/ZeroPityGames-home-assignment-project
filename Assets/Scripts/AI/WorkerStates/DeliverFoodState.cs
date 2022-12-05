@@ -56,6 +56,7 @@ public class DeliverFoodState : State
                 else
                 {
                     isDoneWithOrder = true;
+                    return this;
                 }
             }
             return this;
@@ -64,16 +65,17 @@ public class DeliverFoodState : State
         {
             if (workerController.myCustomer.GetComponentInChildren<SitState>().hasGottenOrder == true)
             {
-                if (workerController.carryAmount <= 0)
-                {
-                    isDoneWithOrder = true;
-                    return this;
-                }
-                else
-                {
-                    return this;
-                }
-                
+                //if (workerController.carryAmount <= 0)
+                //{
+                //    isDoneWithOrder = true;
+                //    return this;
+                //}
+                //else
+                //{
+                //    return this;
+                //}
+                isDoneWithOrder = true;
+                return this;
             }
 
             if (Vector3.Distance(transform.position, workerController.myCustomer.transform.position) < 2f)

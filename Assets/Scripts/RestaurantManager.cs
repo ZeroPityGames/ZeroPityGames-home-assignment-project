@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class RestaurantManager : MonoBehaviour
 {
@@ -11,7 +13,12 @@ public class RestaurantManager : MonoBehaviour
     public GameObject upgradeScreen;
     public GameObject workerStation;
     public int workerPrice;
-     
+    [HideInInspector] public int tablesBuilt;
+    [HideInInspector] public int customersServed;
+    [SerializeField] private GameObject customerCounterCanvas;
+    [SerializeField] private Slider numberOfCustomerSlider;
+    [SerializeField] private TMP_Text numberOfCustomerText;
+
     [HideInInspector] public List<CustomerController> customersInRestaurant = new List<CustomerController>();
     public int foodPrice;
  
@@ -42,5 +49,24 @@ public class RestaurantManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void TurnOfOnSlider(bool state)
+    {
+        if (state)
+        {
+            customerCounterCanvas.SetActive(true);
+        }
+        else
+        {
+            customerCounterCanvas.SetActive(false);
+        }
+    }
+
+    public void UpdateSlider()
+    {
+        customersServed++;
+        numberOfCustomerSlider.value = customersServed;
+        numberOfCustomerText.text = customersServed.ToString();
     }
 }

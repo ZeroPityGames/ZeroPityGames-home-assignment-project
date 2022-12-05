@@ -32,8 +32,19 @@ public class PlayerPickup : MonoBehaviour
             case "Computer":
                 other.gameObject.GetComponentInParent<RestaurantManager>().upgradeScreen.SetActive(true);
                 break;
+            case "Floor":
+                other.gameObject.GetComponentInParent<RestaurantManager>().TurnOfOnSlider(true);
+                break;
             default:
                 break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Floor")
+        {
+            other.gameObject.GetComponentInParent<RestaurantManager>().TurnOfOnSlider(false);
         }
     }
 }
