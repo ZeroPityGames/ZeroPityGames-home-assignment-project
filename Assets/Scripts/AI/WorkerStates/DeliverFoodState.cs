@@ -78,7 +78,7 @@ public class DeliverFoodState : State
                 return this;
             }
 
-            if (Vector3.Distance(transform.position, workerController.myCustomer.transform.position) < 2f)
+            if (Vector3.Distance(transform.position, workerController.myCustomer.transform.position) < 1f)
             {
                 //if (workerController.carryAmount > 0)
                 //{

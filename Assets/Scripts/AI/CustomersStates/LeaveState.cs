@@ -15,7 +15,8 @@ public class LeaveState : State
     }
     public override State RunCurrentState()
     {
-        if (Vector2.Distance(new Vector2(customerController.transform.position.x, customerController.transform.position.z), new Vector2(customerController.exitLocation.x, customerController.exitLocation.z)) < 0.1f)
+        
+        if (Vector2.Distance(new Vector2(customerController.transform.position.x, customerController.transform.position.z), new Vector2(customerController.exitLocation.position.x, customerController.exitLocation.position.z)) < 0.1f)
         {
             customerController.customersChair.isEmpty = true;
             customerController.customersChair.GetComponentInParent<RestaurantManager>().UpdateSlider();
@@ -24,7 +25,7 @@ public class LeaveState : State
         }
         else
         {
-            navMeshAgent.SetDestination(customerController.exitLocation);
+            navMeshAgent.SetDestination(customerController.exitLocation.position);
             return this;
         }
         

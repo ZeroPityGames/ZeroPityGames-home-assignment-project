@@ -10,6 +10,7 @@ public class RestaurantManager : MonoBehaviour
     [SerializeField] private GameObject[] customers;
     [SerializeField] private Transform customerSpawnPosition;
     [SerializeField] private Transform exitLocation;
+    public Transform workerWaitPosition;
     public GameObject upgradeScreen;
     public GameObject workerStation;
     public int workerPrice;
@@ -41,7 +42,7 @@ public class RestaurantManager : MonoBehaviour
                     GameObject customer = Instantiate(customers[Random.Range(0, customers.Length)], customerSpawnPosition.position, Quaternion.identity);
                     customersInRestaurant.Add(customer.GetComponent<CustomerController>());
                     customer.GetComponent<CustomerController>().chairLocation = item.transform.position;
-                    customer.GetComponent<CustomerController>().exitLocation = exitLocation.position;
+                    customer.GetComponent<CustomerController>().exitLocation = exitLocation;
                     customer.GetComponent<CustomerController>().customersChair = item;
                     customer.GetComponent<CustomerController>().canMoveToChair = true;
                     item.isEmpty = false;

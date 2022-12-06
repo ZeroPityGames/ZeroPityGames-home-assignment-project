@@ -21,6 +21,7 @@ public class WaitingForOrderState : State
     {
         workerController = GetComponentInParent<WorkerController>();
         navMeshAgent = GetComponentInParent<NavMeshAgent>();
+        waitPosition = restaurantManager.workerWaitPosition;
         
     }
     public override State RunCurrentState()

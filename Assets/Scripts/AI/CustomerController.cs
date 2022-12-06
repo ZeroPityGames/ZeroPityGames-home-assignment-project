@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CustomerController : MonoBehaviour
 {
     public Vector3 chairLocation;
-    public Vector3 exitLocation; //Make a tag with the exit location later on
+    public Transform exitLocation; //Make a tag with the exit location later on
     public bool canMoveToChair;
 
     public State currentCustomerState;

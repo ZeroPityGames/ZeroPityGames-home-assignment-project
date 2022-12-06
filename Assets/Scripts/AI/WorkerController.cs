@@ -25,6 +25,7 @@ public class WorkerController : MonoBehaviour
 
     private float startingSpeed;
 
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
