@@ -32,28 +32,7 @@ public class WaitingForOrderState : State
         }
         else
         {
-            //GameObject[] customers = GameObject.FindGameObjectsWithTag(workerController.specificCustomerTag);
-            //for (int i = 0; i < customers.Length; i++)
-            //{
-            //    if (customers[i].GetComponentInChildren<WalkState>().isSitting && !customers[i].GetComponent<CustomerController>().hasWorker)
-            //    {
-            //        Debug.Log("SCANNING...");
-            //        customers[i].GetComponentInChildren<WalkState>().isSitting = false;
-            //        workerController.myCustomer = customers[i];
-            //        hasOrder = true;
-
-            //        return pickUpFoodState;
-            //        //break;
-            //    }
-            //    else
-            //    {
-            //        //if (!pathIsSet)
-            //        //{
-            //        //    SetPath();
-            //        //}
-            //        navMeshAgent.SetDestination(new Vector3(7.50f, 0f, 3.5f));
-            //    }
-            //}
+            
             CustomerController[] customers = restaurantManager.customersInRestaurant.ToArray();
             for (int i = 0; i < customers.Length; i++)
             {
@@ -69,10 +48,6 @@ public class WaitingForOrderState : State
                 }
                 else
                 {
-                    //if (!pathIsSet)
-                    //{
-                    //    SetPath();
-                    //}
                     navMeshAgent.SetDestination(waitPosition.position);
                 }
             }
@@ -83,9 +58,4 @@ public class WaitingForOrderState : State
         
     }
 
-    void SetPath()
-    {
-        pathIsSet = true;
-        navMeshAgent.SetDestination(new Vector3(7.50f, 0f, 3.5f));
-    }
 }

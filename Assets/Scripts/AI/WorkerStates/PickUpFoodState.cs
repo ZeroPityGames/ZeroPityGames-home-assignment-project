@@ -32,6 +32,7 @@ public class PickUpFoodState : State
             {
                 isPickedUp = true;
                 workerController.carryAmount = workerController.carryCapacity;
+                return deliverFoodState;
             }
             navMeshAgent.SetDestination(foodPickupLocation.position);
             

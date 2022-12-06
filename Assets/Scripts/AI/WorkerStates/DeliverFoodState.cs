@@ -8,8 +8,6 @@ public class DeliverFoodState : State
     NavMeshAgent navMeshAgent;
     WorkerController workerController;
     
-
-    bool pathIsSet;
     bool isDoneWithOrder;
     [SerializeField] WaitingForOrderState waitingForOrderState;
     [SerializeField] PickUpFoodState pickUpFoodState;
@@ -30,17 +28,9 @@ public class DeliverFoodState : State
             return waitingForOrderState;
         }
 
-        if (workerController.carryAmount <= 0)
-        {
-            Debug.Log("RETURN TO WAITING");
-            waitingForOrderState.hasOrder = false;
-            pickUpFoodState.isPickedUp = false;
-            isDoneWithOrder = false;
-            return waitingForOrderState;
-        }
-
         if (pickUpFoodState.isPickedUp == true && workerController.myCustomer.GetComponentInChildren<SitState>().hasGottenOrder == true)
         {
+            Debug.Log("LOOKING FOR NEW CUSTOMER");
             CustomerController[] customers = waitingForOrderState.restaurantManager.customersInRestaurant.ToArray();
             for (int i = 0; i < customers.Length; i++)
             {
@@ -59,47 +49,19 @@ public class DeliverFoodState : State
                     return this;
                 }
             }
+            isDoneWithOrder = true;
             return this;
         }
         else
         {
             if (workerController.myCustomer.GetComponentInChildren<SitState>().hasGottenOrder == true)
             {
-                //if (workerController.carryAmount <= 0)
-                //{
-                //    isDoneWithOrder = true;
-                //    return this;
-                //}
-                //else
-                //{
-                //    return this;
-                //}
                 isDoneWithOrder = true;
                 return this;
             }
 
             if (Vector3.Distance(transform.position, workerController.myCustomer.transform.position) < 1f)
             {
-                //if (workerController.carryAmount > 0)
-                //{
-                //    workerController.carryAmount--;
-                //    workerController.myCustomer.GetComponentInChildren<SitState>().hasGottenOrder = true;
-                //    if (workerController.carryAmount <= 0)
-                //    {
-                //        isDoneWithOrder = true;
-                //        return this;
-                //    }
-                //    else
-                //    {
-                //        return this;
-                //    }
-
-                //}
-                //else
-                //{
-                //    isDoneWithOrder = true;
-                //    return this;
-                //}
                 workerController.myCustomer.GetComponentInChildren<SitState>().hasGottenOrder = true;
                 isDoneWithOrder = true;
                 return this;
@@ -107,20 +69,5 @@ public class DeliverFoodState : State
             navMeshAgent.SetDestination(workerController.myCustomer.transform.position);
             return this;
         }
-    }
-
-    void SetPath()
-    {
-        pathIsSet = true;
-        navMeshAgent.SetDestination(workerController.myCustomer.transform.position);
-    }
-
-    State DoneWithOrder()
-    {
-        Debug.Log("RETURN TO WAITING");
-        waitingForOrderState.hasOrder = false;
-        pickUpFoodState.isPickedUp = false;
-        isDoneWithOrder = false;
-        return waitingForOrderState;
     }
 }
