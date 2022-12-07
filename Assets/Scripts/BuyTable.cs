@@ -11,12 +11,14 @@ public class BuyTable : MonoBehaviour
     [SerializeField] private Image boughtAmountImage;
     [Header("Dont make table price lower the 100")]
     [SerializeField] private int tablePrice;
+    private float tablePriceForText;
     GameManager gameManager;
     private bool canBuild;
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         priceText.text = tablePrice.ToString();
+        tablePriceForText = tablePrice;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,22 +34,32 @@ public class BuyTable : MonoBehaviour
 
     IEnumerator BoughtAmount()
     {
+        
         while (gameManager.money > 0 && canBuild)
         {
-            yield return new WaitForSeconds(0.01f);
-            gameManager.DecressMoney(1);
-            priceText.text = tablePrice--.ToString();
-            boughtAmountImage.fillAmount += 0.01f;
-            if (boughtAmountImage.fillAmount == 1)
+            while (gameManager.money > 0 && canBuild)
             {
-                gameManager.IncressMoney(1);
-                table.SetActive(true);
-                this.gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.01f);
+                //gameManager.DecressMoney((int)(restaurantPrice * 0.01));
+                gameManager.DecressMoney(tablePrice * 0.01f);
+                //priceText.text = ((int)(restaurantPrice - (restaurantPrice * 0.01))).ToString();
+                priceText.text = tablePrice--.ToString();
+                boughtAmountImage.fillAmount += 0.01f;
+                if (boughtAmountImage.fillAmount == 1)
+                {
+                    gameManager.IncressMoney(1);
+                    table.SetActive(true);
+                    StopCoroutine(BoughtAmount());
+                    this.gameObject.SetActive(false);
+                }
+                if (gameManager.money < tablePrice - (tablePrice - 1))
+                {
+                    StopCoroutine(BoughtAmount());
+                }
             }
-            if (gameManager.money < (int)(tablePrice * 0.01))
-            {
-                StopCoroutine(BoughtAmount());
-            }
+
+
+
         }
     }
 

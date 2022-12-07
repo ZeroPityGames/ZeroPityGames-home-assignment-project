@@ -28,13 +28,21 @@ public class BuyWorker : MonoBehaviour
 
     public void InstantiateWorker()
     {
+        if (gameManager.money >= restaurantManager.workerPrice)
+        {
+            gameManager.DecressMoney(restaurantManager.workerPrice);
+            GameObject workerInstance = Instantiate(worker, spawnPosition.position, Quaternion.identity);
+            workerInstance.GetComponentInChildren<WaitingForOrderState>().restaurantManager = GetComponentInParent<RestaurantManager>();
+            workerInstance.GetComponentInChildren<PickUpFoodState>().foodPickupLocation = GetComponentInParent<RestaurantManager>().GetComponentInChildren<FoodPickup>().transform;
+            levelUpButtons[workerCount].gameObject.SetActive(true);
+            levelUpButtons[workerCount].onClick.AddListener(workerInstance.GetComponent<WorkerController>().LevelUpWorker);
+            workerCount++;
+        }
+        else
+        {
+            Debug.Log("Not Enough Money");
+        }
         
-        gameManager.DecressMoney(restaurantManager.workerPrice);
-        GameObject workerInstance = Instantiate(worker, spawnPosition.position, Quaternion.identity);
-        workerInstance.GetComponentInChildren<WaitingForOrderState>().restaurantManager = GetComponentInParent<RestaurantManager>();
-        workerInstance.GetComponentInChildren<PickUpFoodState>().foodPickupLocation = GetComponentInParent<RestaurantManager>().GetComponentInChildren<FoodPickup>().transform;
-        levelUpButtons[workerCount].onClick.AddListener(workerInstance.GetComponent<WorkerController>().LevelUpWorker);
-        workerCount++;
     }
 
    

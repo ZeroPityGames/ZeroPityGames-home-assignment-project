@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int money;
+    public float money;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text test;
 
@@ -14,21 +14,27 @@ public class GameManager : MonoBehaviour
     {
         UpdateCanvas();
     }
-    public void IncressMoney(int moneyAmount)
+    public void IncressMoney(float moneyAmount)
     {
         money += moneyAmount;
         UpdateCanvas();
     }
 
-    public void DecressMoney(int moneyAmount)
+    public void DecressMoney(float moneyAmount)
     {
         money -= moneyAmount;
         UpdateCanvas();
     }
 
+    public void SetMoney(float moneyAmount)
+    {
+        money = moneyAmount;
+        UpdateCanvas();
+    }
+
     private void UpdateCanvas()
     {
-        moneyText.text = money.ToString() + "$";
+        moneyText.text = ((int)money).ToString() + "$";
     }
 
     void ChangeCramerRate()
