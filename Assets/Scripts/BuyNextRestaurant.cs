@@ -4,19 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BuyTable : MonoBehaviour
+public class BuyNextRestaurant : MonoBehaviour
 {
-    [SerializeField] private TMP_Text priceText;
-    [SerializeField] private GameObject table;
+    [SerializeField] Animator doorAnim;
     [SerializeField] private Image boughtAmountImage;
+    [SerializeField] private TMP_Text priceText;
     [Header("Dont make table price lower the 100")]
-    [SerializeField] private int tablePrice;
+    [SerializeField] private int restaurantPrice;
     GameManager gameManager;
     private bool canBuild;
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        priceText.text = tablePrice.ToString();
+        doorAnim.enabled = false;
+        priceText.text = restaurantPrice.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,23 +29,26 @@ public class BuyTable : MonoBehaviour
         }
     }
 
-    
+
 
     IEnumerator BoughtAmount()
     {
         while (gameManager.money > 0 && canBuild)
         {
             yield return new WaitForSeconds(0.01f);
+            //gameManager.DecressMoney((int)(restaurantPrice * 0.01));
             gameManager.DecressMoney(1);
-            priceText.text = tablePrice--.ToString();
+            //priceText.text = ((int)(restaurantPrice - (restaurantPrice * 0.01))).ToString();
+            priceText.text = restaurantPrice--.ToString();
             boughtAmountImage.fillAmount += 0.01f;
             if (boughtAmountImage.fillAmount == 1)
             {
                 gameManager.IncressMoney(1);
-                table.SetActive(true);
+                doorAnim.enabled = true;
+                StopCoroutine(BoughtAmount());
                 this.gameObject.SetActive(false);
             }
-            if (gameManager.money < (int)(tablePrice * 0.01))
+            if (gameManager.money < restaurantPrice - (restaurantPrice - 1))
             {
                 StopCoroutine(BoughtAmount());
             }
