@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuyWorker : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BuyWorker : MonoBehaviour
     private int workerCount = 0;
 
     [SerializeField] private Button[] levelUpButtons;
+    [SerializeField] private TMP_Text[] workerUpgradeText;
+    [SerializeField] private TMP_Text[] workerSpeedText;
     [SerializeField] private Button test;
     private void Start()
     {
@@ -36,6 +39,8 @@ public class BuyWorker : MonoBehaviour
             workerInstance.GetComponentInChildren<PickUpFoodState>().foodPickupLocation = GetComponentInParent<RestaurantManager>().GetComponentInChildren<FoodPickup>().transform;
             levelUpButtons[workerCount].gameObject.SetActive(true);
             levelUpButtons[workerCount].onClick.AddListener(workerInstance.GetComponent<WorkerController>().LevelUpWorker);
+            workerInstance.GetComponent<WorkerController>().upgradeText = workerUpgradeText[workerCount];
+            workerInstance.GetComponent<WorkerController>().speedText = workerSpeedText[workerCount];
             workerCount++;
         }
         else

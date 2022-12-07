@@ -11,6 +11,7 @@ public class BuyNextRestaurant : MonoBehaviour
     [SerializeField] private TMP_Text priceText;
     [Header("Dont make table price lower the 100")]
     [SerializeField] private int restaurantPrice;
+    private float restaurantPriceForText;
     GameManager gameManager;
     private bool canBuild;
     private void Start()
@@ -18,6 +19,7 @@ public class BuyNextRestaurant : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         doorAnim.enabled = false;
         priceText.text = restaurantPrice.ToString();
+        restaurantPriceForText = restaurantPrice;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,13 +39,14 @@ public class BuyNextRestaurant : MonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
             //gameManager.DecressMoney((int)(restaurantPrice * 0.01));
-            gameManager.DecressMoney(1);
+            gameManager.DecressMoney(restaurantPrice * 0.01f);
             //priceText.text = ((int)(restaurantPrice - (restaurantPrice * 0.01))).ToString();
-            priceText.text = restaurantPrice--.ToString();
+            restaurantPriceForText -= restaurantPrice * 0.01f;
+            priceText.text = ((int)restaurantPriceForText).ToString();
             boughtAmountImage.fillAmount += 0.01f;
             if (boughtAmountImage.fillAmount == 1)
             {
-                gameManager.IncressMoney(1);
+                
                 doorAnim.enabled = true;
                 StopCoroutine(BoughtAmount());
                 this.gameObject.SetActive(false);
@@ -52,6 +55,11 @@ public class BuyNextRestaurant : MonoBehaviour
             {
                 StopCoroutine(BoughtAmount());
             }
+        }
+
+        if (gameManager.money < 0)
+        {
+            gameManager.SetMoney(0);
         }
     }
 

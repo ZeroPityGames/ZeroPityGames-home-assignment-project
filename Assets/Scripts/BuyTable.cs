@@ -34,32 +34,29 @@ public class BuyTable : MonoBehaviour
 
     IEnumerator BoughtAmount()
     {
-        
         while (gameManager.money > 0 && canBuild)
         {
-            while (gameManager.money > 0 && canBuild)
+            yield return new WaitForSeconds(0.01f);
+            //gameManager.DecressMoney((int)(restaurantPrice * 0.01));
+            gameManager.DecressMoney(tablePrice * 0.01f);
+            tablePriceForText -= tablePrice * 0.01f;
+            priceText.text = ((int)tablePriceForText).ToString();
+            boughtAmountImage.fillAmount += 0.01f;
+            if (boughtAmountImage.fillAmount == 1)
             {
-                yield return new WaitForSeconds(0.01f);
-                //gameManager.DecressMoney((int)(restaurantPrice * 0.01));
-                gameManager.DecressMoney(tablePrice * 0.01f);
-                //priceText.text = ((int)(restaurantPrice - (restaurantPrice * 0.01))).ToString();
-                priceText.text = tablePrice--.ToString();
-                boughtAmountImage.fillAmount += 0.01f;
-                if (boughtAmountImage.fillAmount == 1)
-                {
-                    gameManager.IncressMoney(1);
-                    table.SetActive(true);
-                    StopCoroutine(BoughtAmount());
-                    this.gameObject.SetActive(false);
-                }
-                if (gameManager.money < tablePrice - (tablePrice - 1))
-                {
-                    StopCoroutine(BoughtAmount());
-                }
+                table.SetActive(true);
+                StopCoroutine(BoughtAmount());
+                this.gameObject.SetActive(false);
             }
+            if (gameManager.money < 1)
+            {
+                StopCoroutine(BoughtAmount());
+            }
+        }
 
-
-
+        if (gameManager.money < 0)
+        {
+            gameManager.SetMoney(0);
         }
     }
 

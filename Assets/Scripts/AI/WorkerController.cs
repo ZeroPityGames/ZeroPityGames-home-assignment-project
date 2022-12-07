@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class WorkerController : MonoBehaviour
@@ -25,6 +26,8 @@ public class WorkerController : MonoBehaviour
 
     private float startingSpeed;
 
+    [HideInInspector] public TMP_Text upgradeText;
+    [HideInInspector] public TMP_Text speedText;
 
     private void Start()
     {
@@ -59,15 +62,13 @@ public class WorkerController : MonoBehaviour
         Debug.Log("Worker is faster");
         currentPrice = (int)startingUpgradePrice * Mathf.Pow(1.15f,upgradeLevel);
         Debug.Log(currentPrice);
-        if (gameManager.money >= currentPrice)
+        if (gameManager.money >= (int)currentPrice)
         {
             gameManager.DecressMoney((int)currentPrice);
             upgradeLevel++;
             navMeshAgent.speed += startingSpeed * 0.01f;
-            if (upgradeLevel % 10 == 0)
-            {
-                carryCapacity++;
-            }
+            upgradeText.text = "LVL " + (upgradeLevel + 1) + "\n" + (int)currentPrice + "$";
+            speedText.text = "+" + upgradeLevel + "%";
         }
         else
         {
