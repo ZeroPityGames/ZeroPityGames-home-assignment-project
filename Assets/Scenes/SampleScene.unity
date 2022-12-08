@@ -2695,7 +2695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &69675241
 Transform:
   m_ObjectHideFlags: 0
@@ -10631,7 +10631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &248967963
 Transform:
   m_ObjectHideFlags: 0
@@ -14104,7 +14104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.48018715, y: -0.00000030378402, z: 0.00000016630054, w: 0.8771661}
-  m_LocalPosition: {x: 60.800007, y: 14.136115, z: -27.18261}
+  m_LocalPosition: {x: -0.1999944, y: 14.136115, z: -27.18261}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20447,7 +20447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 2000613435}
-  table: {fileID: 0}
+  table: {fileID: 1894676754}
   boughtAmountImage: {fileID: 2095754172}
   tablePrice: 2000
 --- !u!65 &501705063
@@ -34587,7 +34587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &828233597
 Transform:
   m_ObjectHideFlags: 0
@@ -35034,7 +35034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &842253579
 Transform:
   m_ObjectHideFlags: 0
@@ -36858,7 +36858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 928237579}
-  table: {fileID: 0}
+  table: {fileID: 837961134}
   boughtAmountImage: {fileID: 279818656}
   tablePrice: 3000
 --- !u!23 &886594508
@@ -38927,7 +38927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 916849525}
-  table: {fileID: 0}
+  table: {fileID: 828233596}
   boughtAmountImage: {fileID: 497217317}
   tablePrice: 2000
 --- !u!65 &954759486
@@ -46685,7 +46685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559403298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.8, y: 1.5, z: -19.1}
+  m_LocalPosition: {x: -0.2, y: 1.5, z: -19.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49860,7 +49860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 1390095148}
-  table: {fileID: 0}
+  table: {fileID: 752220740}
   boughtAmountImage: {fileID: 1689162294}
   tablePrice: 700
 --- !u!65 &1215725963
@@ -52320,7 +52320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b148f95efd19094aa14137f977603e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 20000
+  money: 0
   moneyText: {fileID: 32644857340716234}
   test: {fileID: 0}
 --- !u!4 &1295238737
@@ -59708,7 +59708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451334073}
   m_LocalRotation: {x: 0.48018715, y: -0.00000030378402, z: 0.00000016630054, w: 0.8771661}
-  m_LocalPosition: {x: 60.800007, y: 14.136115, z: -27.18261}
+  m_LocalPosition: {x: -0.1999944, y: 14.136115, z: -27.18261}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60774,7 +60774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 1583309748}
-  table: {fileID: 0}
+  table: {fileID: 69675240}
   boughtAmountImage: {fileID: 1351132119}
   tablePrice: 3000
 --- !u!23 &1481982572
@@ -72185,7 +72185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 1410592434}
-  table: {fileID: 0}
+  table: {fileID: 248967962}
   boughtAmountImage: {fileID: 743786245}
   tablePrice: 700
 --- !u!65 &1812625931
