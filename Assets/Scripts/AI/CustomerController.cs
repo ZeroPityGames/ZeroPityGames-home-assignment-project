@@ -12,8 +12,8 @@ public class CustomerController : MonoBehaviour
 
     public State currentCustomerState;
 
-    public Canvas orderIndicator;
-    public Canvas eatingIndicator;
+    public GameObject orderIndicator;
+    //public GameObject eatingIndicator;
 
     public bool hasWorker;
 

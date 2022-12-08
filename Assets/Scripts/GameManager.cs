@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public float money;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text test;
+    [SerializeField] private TMP_Text[] moneyAmountInStore;
 
     private void Start()
     {
@@ -35,6 +36,10 @@ public class GameManager : MonoBehaviour
     private void UpdateCanvas()
     {
         moneyText.text = ((int)money).ToString() + "$";
+        foreach (TMP_Text item in moneyAmountInStore)
+        {
+            item.text = ((int)money).ToString() + "$";
+        }
     }
 
     void ChangeCramerRate()

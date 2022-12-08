@@ -30,9 +30,9 @@ public class EatState : State
         }
         else
         {
-            customerController.eatingIndicator.gameObject.SetActive(true);
+            //customerController.eatingIndicator.SetActive(true);
             eatingSeconds -= Time.deltaTime;
-            customerController.eatingIndicator.GetComponentInChildren<TMP_Text>().text = ((int)eatingSeconds).ToString();
+            //customerController.eatingIndicator.GetComponentInChildren<TMP_Text>().text = ((int)eatingSeconds).ToString();
 
             if (eatingSeconds <= 0)
             {

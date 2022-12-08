@@ -8,7 +8,7 @@ public class PlayerMovment : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private Animator anim;
     [SerializeField] private FixedJoystick fj;
-    [SerializeField] private float movmentSpeed;
+    public float movmentSpeed;
     [SerializeField] private GameObject playerModel;
     [SerializeField] private float rotationSpeed;
     private void Start()
@@ -34,4 +34,7 @@ public class PlayerMovment : MonoBehaviour
     {
         rb.velocity = new Vector3(fj.Horizontal * movmentSpeed, rb.velocity.y, fj.Vertical * movmentSpeed);
     }
+
+    
+
 }

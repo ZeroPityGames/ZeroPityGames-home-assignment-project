@@ -22,7 +22,11 @@ public class RestaurantManager : MonoBehaviour
 
     [HideInInspector] public List<CustomerController> customersInRestaurant = new List<CustomerController>();
     public int foodPrice;
- 
+
+    public string restaurantType;
+
+    
+
     private void Start()
     {
         StartCoroutine(SlowUpdate());

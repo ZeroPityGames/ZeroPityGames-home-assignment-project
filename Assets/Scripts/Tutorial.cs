@@ -27,7 +27,7 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("Tutorial") > 1)
+        if (PlayerPrefs.GetInt("Tutorial") == 1)
         {
             this.enabled = false;
         }
@@ -85,7 +85,7 @@ public class Tutorial : MonoBehaviour
                     if (Vector3.Distance(playerLocation.position, buyTableLocation.position) < 2f)
                     {
                         Debug.Log("DISABLING THIS GAME OBJECT BY ORDER 4");
-                        //PlayerPrefs.SetInt("Tutorial", 1);
+                        PlayerPrefs.SetInt("Tutorial", 1);
                         order = 5;
                         gameObject.SetActive(false);
                         tutorialText.text = "";

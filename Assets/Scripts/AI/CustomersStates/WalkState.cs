@@ -11,7 +11,7 @@ public class WalkState : State
     NavMeshAgent navMeshAgent;
     CustomerController customerController;
 
-    bool pathIsSet = false;
+    bool customerHasSat = false;
 
     private void Start()
     {
@@ -36,15 +36,17 @@ public class WalkState : State
             //{
             //    SetPath();
             //}
-            navMeshAgent.SetDestination(customerController.chairLocation);
+            if (!customerHasSat)
+            {
+                navMeshAgent.SetDestination(customerController.chairLocation);
+                Debug.Log("walking");
+                customerHasSat = true;
+            }
+            
             //Debug.Log("WALKING");
             return this;
         }
     }
 
-    void SetPath()
-    {
-        pathIsSet = true;
-        navMeshAgent.SetDestination(customerController.chairLocation);
-    }
+    
 }
