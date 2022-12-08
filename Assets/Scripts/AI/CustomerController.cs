@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class CustomerController : MonoBehaviour
 {
     public Vector3 chairLocation;
@@ -20,9 +21,12 @@ public class CustomerController : MonoBehaviour
 
     NavMeshAgent navMeshAgent;
 
+    public Animator anim;
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+       
     }
     private void Update()
     {

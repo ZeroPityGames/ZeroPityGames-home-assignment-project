@@ -20,7 +20,7 @@ public class PlayerMovment : MonoBehaviour
     {
         if (new Vector3(fj.Horizontal,0, fj.Vertical) != Vector3.zero)
         {
-            Debug.Log("LOOKING");
+            //Debug.Log("LOOKING");
             anim.SetBool("IsMoving", true);
             Quaternion toRotation = Quaternion.LookRotation(new Vector3(fj.Horizontal, 0, fj.Vertical), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);

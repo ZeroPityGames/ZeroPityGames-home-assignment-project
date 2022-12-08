@@ -11,6 +11,7 @@ public class EatState : State
     CustomerController customerController;
 
     float eatingSeconds = 3;
+    
 
     GameManager gameManager;
 
@@ -24,11 +25,11 @@ public class EatState : State
     {
         if (isDoneEating)
         {
+            customerController.anim.SetBool("isSitting", false);
             return leaveState;
         }
         else
         {
-            
             customerController.eatingIndicator.gameObject.SetActive(true);
             eatingSeconds -= Time.deltaTime;
             customerController.eatingIndicator.GetComponentInChildren<TMP_Text>().text = ((int)eatingSeconds).ToString();
